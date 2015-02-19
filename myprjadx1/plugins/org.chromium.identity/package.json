@@ -1,0 +1,22 @@
+{
+    "version": "1.3.1",
+    "name": "org.chromium.identity",
+    "cordova_name": "Chrome Apps Identity API",
+    "repo": "https://github.com/MobileChromeApps/mobile-chrome-apps.git",
+    "issue": "https://github.com/MobileChromeApps/mobile-chrome-apps/issues",
+    "keywords": [
+        "chrome",
+        "identity",
+        "OAuth"
+    ],
+    "platforms": [
+        "android",
+        "ios"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ]
+}

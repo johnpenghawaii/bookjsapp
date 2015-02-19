@@ -1,0 +1,27 @@
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.greenoutline{
+    outline:green dotted thick;
+}
+
+@media all and (max-width: 400px) {
+    img{
+        width: 30%;
+        height:auto;        
+    }
+}
+
+.subtitle{
+    width: 100%;
+    background-color: #03B1FC;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+    font-size: 1.25em;
+    
+}

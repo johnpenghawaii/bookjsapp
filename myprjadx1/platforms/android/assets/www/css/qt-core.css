@@ -1,0 +1,12 @@
+/**
+ * 	This is app core styles file
+ */
+
+.header-menu-items.ui-controlgroup.ui-mini {
+    /* overriding top margin on heared menu items */
+    margin: -.2em 0 0 0;
+}
+
+.hide {
+	display: none;
+}

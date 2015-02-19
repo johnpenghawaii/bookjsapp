@@ -1,0 +1,27 @@
+{
+  "name": "Myprj for adx",
+  "version": "0.0.5",
+  "manifest_version": 2,
+  "minimum_chrome_version": "29",
+  "oauth2": {
+    "client_id": "771773413455-kimpsk0slsqtv2lg2hm2loidvqbttn7b.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive"
+    ]
+  },
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "key": "AIzaSyCkzAtzog4cWyzz3QNxDYD2A0CI8Dm2wXg",
+  "app": {
+    "background": {
+      "scripts": ["js/background.js"]
+    }
+  },
+  "permissions": [
+    "identity",
+    "https://ssl.gstatic.com/",
+    "https://www.googleapis.com/",
+    "https://accounts.google.com/"
+  ]
+}

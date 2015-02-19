@@ -1,0 +1,22 @@
+{
+    "version": "1.0.2",
+    "name": "org.chromium.frameworks.googleplus",
+    "cordova_name": "Google Plus iOS Framework Plugin",
+    "repo": "https://github.com/MobileChromeApps/mobile-chrome-apps.git",
+    "issue": "https://github.com/MobileChromeApps/mobile-chrome-apps/issues",
+    "keywords": [
+        "google",
+        "plus",
+        "iOS",
+        "framework"
+    ],
+    "platforms": [
+        "ios"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ]
+}

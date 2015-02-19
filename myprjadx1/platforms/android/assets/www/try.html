@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <title>test</title>
+	<script type="text/javascript" charset="utf-8" src="js/jquery-2.1.1.min.js"></script>	
+	<script type="text/javascript" charset="utf-8" src="js/cloudcli.js"></script>	
+	<script>
+	function encodeStream64(filestream, beg, fin) {
+  var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+  
+  if (!beg  &&  !fin){
+    beg = 0;
+    fin = filestream.length;
+  }
+    
+  var output = "";
+  var chr1, chr2, chr3 = "";
+  var enc1, enc2, enc3, enc4 = "";
+  var i = beg;
+  
+  do {
+    chr1 = filestream.charCodeAt(i++) & 0xff;
+    chr2 = filestream.charCodeAt(i++) & 0xff;
+    chr3 = filestream.charCodeAt(i++) & 0xff;
+    
+    enc1 = chr1 >> 2;
+    enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+    enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+    enc4 = chr3 & 63;
+    
+    if (isNaN(chr2)) {
+      enc3 = enc4 = 64;
+    } else if (isNaN(chr3)) {
+      enc4 = 64;
+    }
+    
+    output = output +
+      keyStr.charAt(enc1) +
+      keyStr.charAt(enc2) +
+      keyStr.charAt(enc3) +
+      keyStr.charAt(enc4);
+    chr1 = chr2 = chr3 = "";
+    enc1 = enc2 = enc3 = enc4 = "";
+  } while (i < fin);
+  
+  return output;
+}
+    function ajaxgetaudio(){
+	try {
+    // Fix up for prefixing
+    window.AudioContext = window.AudioContext||window.webkitAudioContext;
+    context = new AudioContext();
+        }
+    catch(e) {
+    alert('Web Audio API is not supported in this browser');
+    }
+	
+	$.ajax({
+    type: "GET",
+    url: 'http://192.168.0.28/bc-cgi/audio/receive.cgi?httptype=singlepart&codec=32KADPCM',
+    datatype:"arraybuffer",
+    success: function (data) {
+	 console.log('Get Audio buffer ----------------');
+	  context.decodeAudioData(data, function(buffer) {
+      var source = context.createBufferSource();
+	  source.buffer = buffer;   
+	  source.connect(context.destination); 
+	  source.start(0);  
+    }, onError);
+        //$('#CaptchaImg').attr('src', "data:image/jpg;base64," + encodeStream64(data));
+           },
+	error: function() {
+	    console.log('err callback for audio');
+           }	
+         });   	
+	}
+	
+	function Testobj()
+  {
+   this.myname = "";
+  }
+  
+  Testobj.prototype.setname = function(name)
+   {
+    this.myname = name;
+   } 
+  
+   Testobj.prototype.prtname = function ()
+   {
+    console.log('name is:' + this.myname);
+   }
+	
+	$(document).ready(function(){
+	 console.log('In the page HOME ----------------');
+	 //ajaxgetaudio();
+	 //iotvar = new Iothandle();
+	 //iotvar.login( "tester", "123456", "HTC816");
+     //setTimeout(function(){iotvar.getchannel("HTC816");}, 3000);
+	 //var sname = new Testobj();
+	 //sname.setname("bob");
+	 //sname.prtname();
+
+	 //iotvar.getchannel("HTC816"); 
+	 //iothandle.longpoll();
+	 //iothandle.updateio("39788b40425e4dc19d3e18b1baa5a228", "NotifyByEmail","value","true");
+	 
+	 document.getElementById("bon1").addEventListener("click", loginhd);
+	 document.getElementById("bon2").addEventListener("click", updatehd);
+	 
+	 
+	 function loginhd() {
+        iotvar = new Iothandle();
+		iotvar.login( "tester", "123456", "HTC816");
+		setTimeout(function(){iotvar.getchannel();}, 1000);
+		//setTimeout(function(){iotvar.longpoll();}, 2000);
+		setTimeout(function(){iotvar.updateio("39788b40425e4dc19d3e18b1baa5a228", "ToggleSiren","value","true");}, 2000);
+     } 
+
+     function updatehd() {
+        iotvar = new Iothandle();
+		iotvar.login( "tester", "123456", "HTC816");
+     } 	 
+    	  
+    });
+	
+	
+	
+    </script>	
+		
+    </head>
+    
+   <body>     
+   <img id="CaptchaImg" src="http://192.168.3.28/mjpg/video.mjpg?camera=1&audioin=no&fps=7" alt="Try Again for Image" style="position:relative;left:25%;"" height="100" width="150"/>
+     <p id="bon1">Login </p>
+	 <p id="bon2">Update </p>
+   </body> 
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GTask Demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />        
+        <script type="text/javascript" charset="utf-8" src="js/jquery-2.1.1.min.js"></script>
+        <!-- The following must be AFTER jquery core and BEFORE jquery mobile js -->
+        <script type="text/javascript">
+        $(document).bind("mobileinit", function() {
+            console.log("mobileinit GLOBAL - override jQM global config values before jQM loads");
+            $.mobile.touchOverflowEnabled = true;
+            $.mobile.defaultPageTransition = 'none'; // optional - for better performance on Android
+            $.mobile.loadingMessageTextVisible = true; // optional - added to show text message
+            $.mobile.buttonMarkup.hoverDelay = 20; // optional added to remove sluggishness - jqm default 200
+        });
+        </script>
+        <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js" charset="utf-8"></script>		
+		<script type="text/javascript" src="js/gdocs.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/upload.js" charset="utf-8"></script>
+    </head>
+    
+   <body>
+     
+<div data-role="page" id="pageone">
+  <div data-role="header">
+  <h1>Project picture</h1>
+  </div>
+  <div data-role="main" class="ui-content">
+   <div class="ui-grid-a">
+      <div class="ui-block-a">
+    <a href="#recodelink" id="recode-code" class="ui-btn ui-btn-b 
+	   ui-shadow ui-corner-all ui-icon-home ui-btn-icon-left" data-theme="c" >Record</a>
+      </div>
+        <div class="ui-block-b">  
+	<a href="#browselink" id="browse-code" class="ui-btn ui-btn-b ui-shadow 
+	    ui-corner-all ui-icon-user ui-btn-icon-left" data-rel="dialog">Browse</a>
+      </div>
+   </div> 
+	<a href="#info" class="ui-btn ui-shadow ui-corner-all ui-icon-info " 
+	   data-rel="dialog">Information</a>
+  </div>
+  <div data-role="footer" data-position="fixed">
+  <h1>WELCOME</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="recodelink">
+  <div data-role="header">
+  <h1>Picture</h1>
+  <img id="CaptchaImg" src="" alt="Try Again for Image" style="position:relative;left:25%;"" height="220" width="250"/>
+  </div>
+  <div data-role="main" class="ui-content">
+  <a href="#pageone" class="ui-btn ui-btn-inline ui-shadow ui-corner-all
+     ui-icon-back ui-btn-icon-left">Go Back</a>
+  <a href="#" class="ui-btn ui-btn-inline ui-shadow 
+     ui-corner-all ui-icon-lock ui-btn-icon-left" id="camcontrol">Take Picture</a>
+  <a href="#recordlink" class="ui-btn ui-btn-inline ui-shadow 
+     ui-corner-all ui-icon-lock ui-btn-icon-left" id="miccontrol" data-rel="dialog">Recording</a>
+   </div> 
+  <div data-role="footer">
+  <h1>WELCOME</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="recordlink">
+  <div data-role="header">
+  <h1>Record Msg</h1>
+   <img id="RecodeImg" src="" alt="Try Again for Image" style="position:relative;left:25%;"" height="100" width="150"/>
+  </div>
+  <div data-role="main" class="ui-content">
+  <p id="recordmsg">Loading...</p>
+  <a href="#pageone" class="ui-btn ui-btn-inline ui-shadow ui-corner-all 
+     ui-icon-back ui-btn-icon-left" id="stopreccontrol">STOP</a>
+  </div>
+  <div data-role="footer">
+  <h1>WELCOME</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="browselink">
+  <div data-role="header">
+  <h1>Browse Picture</h1>
+   <img id="ShowImg" src="" alt="Try Again for Image" style="position:relative;left:25%;"" height="220" width="250"/>
+  </div>
+ 
+  <div data-role="main" class="ui-content">
+  <a href="#" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-icon-back 
+     ui-btn-icon-left" id="playcontrol">PLAY</a>
+  <a href="#pageone" class="ui-btn ui-btn-inline ui-shadow 
+     ui-corner-all ui-icon-back ui-btn-icon-left" id="stopplaycontrol" >Go Back</a>
+  </div>
+
+  <div data-role="footer">
+  <h1>WELCOME</h1>
+  </div>
+</div>
+
+<div data-role="page" id="info">
+  <div data-role="header">
+  <h1>Information</h1>
+  </div>
+  <div data-role="main" class="ui-content">
+  <p>picture to Google Drive version</p>
+  </div>
+
+  <div data-role="footer">
+  <h1>WELCOME</h1>
+  </div>
+</div> 
+
+  </body> 
+</html>
