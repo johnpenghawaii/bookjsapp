@@ -1,4 +1,13 @@
 {
     "packageId": "com.example.myprjadx1",
-	
+    "android": {
+     "oauth2": {
+     "client_id": ""
+     }
+   },
+    "ios": {
+     "oauth2": {
+     "client_id": ""
+     }
+   }  	
 }

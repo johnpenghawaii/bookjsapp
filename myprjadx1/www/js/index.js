@@ -2,6 +2,7 @@
    Event Handler HOOKS and Implementations.
  */
 
+var ua = navigator.userAgent.toLowerCase();
 var mediaRecFile =  "Recording001.wav" ;
 var my_recorder = null, my_player = null;
 var app = {
@@ -134,7 +135,7 @@ console.log("original file entry:"+file);
              my_recorder.release();
 		  try
 		  {
-		   my_recorder = new Media(mediaRecFile, app.onMediaCallSuccess, app.onMediaCallError);
+                      my_recorder = new Media(mediaRecFile, app.onMediaCallSuccess, app.onMediaCallError);
 		  } catch(e)
             {
                console.log('record error'+ e);
@@ -149,8 +150,15 @@ console.log("original file entry:"+file);
 	},
 	onplayButtonClick: function() {
 	      console.log('play wav Session');
-		   my_player = new Media("/sdcard/" + mediaRecFile, app.onMediaCallSuccess, app.onMediaCallError);
-		   if(my_player)
+                  if(ua.match(/android/i))
+                  {
+	           console.log('##### android phone #####');
+                   my_player = new Media("/sdcard/" + mediaRecFile, app.onMediaCallSuccess, app.onMediaCallError);
+                  }else{
+                   my_player = new Media(mediaRecFile, app.onMediaCallSuccess, app.onMediaCallError);
+		     } 
+
+                  if(my_player)
 		   {
 		     my_player.play();
 		   } else

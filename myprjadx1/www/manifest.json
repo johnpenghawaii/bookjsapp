@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "minimum_chrome_version": "29",
   "oauth2": {
-    "client_id": "771773413455-kimpsk0slsqtv2lg2hm2loidvqbttn7b.apps.googleusercontent.com",
+    "client_id": "",
     "scopes": [
       "https://www.googleapis.com/auth/drive"
     ]
@@ -12,7 +12,7 @@
   "icons": {
     "128": "icon_128.png"
   },
-  "key": "AIzaSyCkzAtzog4cWyzz3QNxDYD2A0CI8Dm2wXg",
+  "key": "",
   "app": {
     "background": {
       "scripts": ["js/background.js"]
